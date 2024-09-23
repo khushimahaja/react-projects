@@ -1,0 +1,57 @@
+{
+  "name": "@unruly/vast-parser",
+  "version": "2.0.15",
+  "description": "Parses VAST files into plain javascript objects",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "yarn rimraf lib && yarn babel --out-dir lib src",
+    "lint": "yarn eslint '**/*.js'",
+    "test:unit": "yarn mocha --opts test/mocha.opts './test/**/*Spec.js'",
+    "test:integration": "yarn mocha --opts test/mocha.opts './test/integration-tests/*.test.js'",
+    "test": "yarn test:unit && yarn test:integration",
+    "bump": "yarn version --patch",
+    "publish:npm": "npm publish --userconfig ~/.npmrc-publish",
+    "prepublishOnly": "yarn lint && yarn test && yarn build && yarn bump",
+    "postpublish": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unruly/vast-parser.git"
+  },
+  "keywords": [
+    "vast"
+  ],
+  "author": "oss@unrulygroup.com",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "jsdom": "^11.3.0",
+    "mocha": "^2.5.3",
+    "node-fetch": "^1.7.3",
+    "rimraf": "^2.6.2",
+    "sinon": "^1.17.4",
+    "sinon-as-promised": "^4.0.2",
+    "sinon-chai": "^2.8.0",
+    "url": "^0.11.0",
+    "xmldom": "^0.1.27"
+  },
+  "dependencies": {
+    "jquery": "3.1.1"
+  }
+}
